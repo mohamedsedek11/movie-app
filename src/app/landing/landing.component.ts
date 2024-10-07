@@ -15,7 +15,7 @@ Swiper.use([Navigation, Pagination, Autoplay]);
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [NavbarComponent , NgxSpinnerModule ,CommonModule , RouterLink ],
+  imports: [NavbarComponent, NgxSpinnerModule, CommonModule, RouterLink  ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ] // Important for Angular 15+
@@ -74,6 +74,7 @@ export class LandingComponent {
       },
     }
     Object.assign(Myswiper, swiper);
+
   }
 
 

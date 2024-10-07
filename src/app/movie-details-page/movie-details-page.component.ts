@@ -275,9 +275,14 @@ this.observe.observe(box)
 
   popUp(key: any) {
     // window.open(`https://www.youtube.com/embed/${key}`, '_blank');
-    this.active = true;
-    const unsafeUrl = `https://www.youtube.com/embed/${key}`;
-     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+    
+    if (window.innerWidth < 863) {
+      window.open(`https://www.youtube.com/embed/${key}`, '_blank');
+    } else {
+      const unsafeUrl = `https://www.youtube.com/embed/${key}`;
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+      this.active = true;
+    }
   }
 
 
@@ -335,7 +340,6 @@ this.observe.observe(box)
     }
   }
   getSimilarMovieId(id: any) {
-    /* i want to screen to top  smoothlt*/
 
     
     if (this.mediaType == 'movie') {

@@ -23,11 +23,9 @@ searchFunction() {
     this.all = false;
     this.loading = true;
     this.searchCondition = true;
-    const input = this.el.nativeElement.querySelector('input');
-    input.disabled = true;
+    
     setTimeout(() => {
       this.loading = false;
-      this.searchresult = true;
       this.seriesObservable = this.movieService.searchSeries(this.searchVal).subscribe((series : any) => {
         this.seriesData = series.results;
         this.seriesData.map((series: any) => {
@@ -36,7 +34,10 @@ searchFunction() {
         this.allsearchresults = [...this.seriesData];
         
       });
+      this.searchresult = true;
     }, 1000)
+  } else {
+    this.allMovies()
   }
 }
 allMovies() {
@@ -48,21 +49,15 @@ allMovies() {
   this.ngOnInit();
 }
 
-  /* Series Observable */
+  
   seriesObservable!: any;
   seriesData!: any;
   allresults!: any[];
   allsearchresults!: any[];
-  /* Series Observable */
-
-  /* Main Properties */
   path: string = "https://image.tmdb.org/t/p/w500";
   backGround: string = "https://image.tmdb.org/t/p/original";
   searchCondition: any;
   searchVal: any;
-  
-  /* Main Properties */
-
   all: boolean = true;
   loading: boolean = false;
   searchresult: boolean = false;

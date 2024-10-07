@@ -616,6 +616,9 @@ position: relative;
     .movie_details ul{
         gap: 0.5rem;
     }
+    .movie_details h2{
+        font-size: 1.8rem !important;
+    }
 }
 
 @media (width < 1438px){

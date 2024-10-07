@@ -19,7 +19,7 @@ import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgxSpinnerModule , ToastrModule,RouterOutlet ,CommonModule ,NavbarComponent , FooterComponent ,ScrollToTopComponent ,MovieDetailsPageComponent , LandingComponent , HomeComponent ,TrendingMoviesComponent , TopRatedMoviesComponent , TopRatedSeriesComponent , TrendingSeriesComponent],
+  imports: [NgxSpinnerModule ,ToastrModule,RouterOutlet ,CommonModule ,NavbarComponent , FooterComponent ,ScrollToTopComponent ,MovieDetailsPageComponent , LandingComponent , HomeComponent ,TrendingMoviesComponent , TopRatedMoviesComponent , TopRatedSeriesComponent , TrendingSeriesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ] 

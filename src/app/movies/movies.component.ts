@@ -93,24 +93,26 @@ export class MoviesComponent {
       this.all = false;
       this.loading = true;
       this.searchCondition = true;
-      const input = this.el.nativeElement.querySelector('input');
-      input.disabled = true;
+      
       setTimeout(() => {
         this.loading = false;
-        this.searchresult = true;
         this.movieObservable = this.movieService.searchMovies(this.searchVal).subscribe((movie : any) => {
           this.movies = movie.results;
           this.movies.map((movie: any) => {
             movie.vote_average = Math.round(movie.vote_average * 10) / 10
           })
         this.allsearchresults = [...this.movies]
-      });
+        });
+        this.searchresult = true;
       },1000)
       
+    } else {
+      this.allMovies();
     }
   }
 
   allMovies() {
+    this.arr = []
     this.searchCondition = false;
     this.searchVal = '';
     this.searchresult = false;

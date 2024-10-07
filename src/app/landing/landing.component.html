@@ -1,7 +1,7 @@
 <div class="container">
   <swiper-container #swiperContainer class="swiper-container" loop="true" centeredSlides="treu" centeredSlidesBounds="true">
     @for (item of all; track $index) {
-    <swiper-slide [ngStyle]="{'background-image': 'linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),url(' +  backGround  + item.backdrop_path + ')'}"  [attr.data-image]="item.backdrop_path" [attr.data-name]="item.original_title" [attr.data-desc]="item.overview">
+    <swiper-slide  [ngStyle]="{'background-image': 'linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),url(' +  backGround  + item.backdrop_path + ')'}"  [attr.data-image]="item.backdrop_path" [attr.data-name]="item.original_title" [attr.data-desc]="item.overview">
       <div class="details">
       <div class="item_info">
         <h2>{{item.title || item.name}}</h2>
@@ -13,7 +13,7 @@
       </div>
       <div class="item_poster">
         <div class="card">
-          <img [src]="path + item.poster_path" alt="">
+          <img [src]="path + item.poster_path" [alt]="item.name || item.title" loading="lazy" class="headimg" >
         </div>
       </div>
     </div>
