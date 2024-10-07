@@ -1,0 +1,110 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* import bootstrap now*/
+
+@import 'ngx-toastr/toastr';
+
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Nunito",sans-serif;
+    scroll-behavior: smooth;
+    --text-color: #ffffff ;
+    --second-text : #000000;
+    --background-color: #ffffff;
+    --bachground-nav-List : #ffffff ;
+    --border-color: #ffffff;
+    --nav-bg-color: #ffffff;
+    --nav-shadow : 0 14px 30px #00000013; 
+    --nav-blur : none;
+    --nav-list-btn-color: rgb(239 239 239 / 1) ;
+    --nav-list-btn-bgcolor: rgba(81, 90, 104, 0.177) ;
+    --nav-menu-btn-color: #000000;
+    --side-bg-color: rgba(254, 254, 254, .8);
+    --side-back-drop-color: blur(30px) ;
+    --side-border :  1px solid rgba(255, 255, 255, .3) ;
+    --side-box-shadow: 0 4px 30px #0000001a ;
+    --side-bar-btn-color: rgba(0, 0, 0, 0.796);
+    --side-bar-h4-color: rgba(0, 0, 0, 0.796) ;
+    --side-bar-logo-color: rgb(25 22 36);
+    --side-bar-links-color : rgb(96 104 117);
+    --side-bar-links-active : rgb(25 22 36);
+    --section-bg-color : #ffffff ;
+    --head-section-color : #000000 ;
+    --search-color : rgb(113, 112, 112);
+    --search-bg-color: none;
+    --first-color: #ffffff;
+    --nav-list-bg-color : #ffffff;
+    --nav-list-border :1px solid #ffffff ;
+    --nav-list-shadow : none;
+    --btn-option :rgb(81 90 104) ;
+    --skeleton-first:hsl(203 , 43% , 89%);
+    --skeleton-second : hsl(200 , 20% , 95%) ;
+    transition: color 0.5s ease;
+}
+
+body.dark{
+
+    --text-color: #ffffff;
+    --second-text : #ffffff;
+    --background-color: #191624;
+    --bachground-nav-List : rgba(0, 0, 0, 0.6) ;
+    --border-color: rgba(255, 255, 255, .3);
+    --nav-bg-color: linear-gradient(to bottom, rgba(0, 0, 0, .4), rgba(0, 0, 0, .3));
+    --nav-shadow : none; 
+    --nav-blur : blur(50px);
+    --nav-list-btn-color:  rgb(81 90 104);
+    --nav-list-btn-bgcolor: rgba(81, 90, 104, 0.177) ;
+    --nav-menu-btn-color: #ffffff;
+    --side-bg-color: linear-gradient(to bottom, rgba(255, 255, 255, .075), rgba(255, 255, 255, 0));
+    --side-back-drop-color: blur(24px) ;
+    --side-border : none;
+    --side-box-shadow: 0 4px 30px #0000001a ;
+    --side-bar-btn-color: rgb(239 239 239 / 1);
+    --side-bar-h4-color: rgb(249 250 251 / 1) ;
+    --side-bar-logo-color: rgb(250 250 250 / 1);
+    --side-bar-links-color : #dddee2;
+    --side-bar-links-active : #efefef;
+    --section-bg-color : #191624;
+    --head-section-color : #ffffff ;
+    --search-color : rgb(250 250 250);
+    --search-bg-color: rgb(48 45 58);
+    --second-color: #000000;
+    --nav-list-bg-color : rgba(0, 0, 0, 0.6);
+    --nav-list-border :1px solid rgba(255, 255, 255, .3) ;
+    --nav-list-shadow : 0 4px 30px #0000001a;
+    --btn-option :rgb(204 208 214) ;
+    --skeleton-first:#1F2937;
+    --skeleton-second : #495464;
+    transition: color 0.5s ease;
+}
+
+
+::-webkit-scrollbar{
+    width: 8px;
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-corner{
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #aaa;
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #464646;
+}

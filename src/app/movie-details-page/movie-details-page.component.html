@@ -1,0 +1,206 @@
+
+<!-- <app-single-movie-header [movieId]="id"></app-single-movie-header> -->
+<section class="movieDetailsSection" [ngStyle]="{'background-image': 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),url(' +  'https://image.tmdb.org/t/p/original' + bachdrop + ')'}">
+    <div class="container">
+      <div class="movie_poster">
+        <div class="poster_holder "  >
+          <img [src]="poster" alt="title"/>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg><span>{{voteAverage}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie_details">
+        <h2>{{title}}</h2>
+        <ul>
+          @for (item of genres; track $index) {
+            <span>{{item.name}}</span>
+          }
+        </ul>
+        <p>
+          <span
+            >{{overview}}</span
+          >
+          @if (!showMore) {
+            <button (click)="showmore()">show more</button>
+          }@else {
+            <button (click)="showmore()">show less</button>
+          }
+          
+        </p>
+        <div class="cast_section">
+            <div class="info">
+                <div class="infoItem">
+                    <h4>Status:</h4>
+                    <span>{{status}}</span>
+                </div>
+                <div class="infoItem">
+                    <h4>Relese Date:</h4>
+                    <span>{{releasedDate | date}}</span>
+                </div>
+                <div class="infoItem">
+                  @if (mediaType == 'movie') {
+                   <h4>Runtime:</h4>
+                    <span>{{runTime}}</span> 
+                  }@else {
+                    <h4>Episode:</h4>
+                    <span>{{runTime}}</span>
+                  }
+                    
+                </div>
+            </div>
+            <div class="info">
+                <h4>Director:</h4>
+                <span>{{directorName}}</span>
+            </div>
+            <div class="info">
+                <h4>Writer:</h4>
+                <span>{{writerName}}</span>
+            </div>
+            <div class="info">
+                <h4>Productor:</h4>
+                <span>{{productionName}}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+<!-- <app-single-movie-cast [movieId]="id"></app-single-movie-cast> -->
+<section class="cast_section_swiper">
+  <div class="container_cast">
+    <div class="header">
+      <div class="relative">
+          <h3>Top cast</h3>
+          <div class="line"></div>
+      </div>
+  </div>
+
+    <swiper-container #swiperContainer class="swiper-container_cast"  loop="true" cssmode="true" space-between="20" slides-per-view="auto">
+      @for (item of cast; track $index) {
+        @if(item.profile_path !== null){
+          <swiper-slide class="item-slide-cast">
+              <div class="actor_profile">
+                <img [src]="'https://image.tmdb.org/t/p/w500' + item.profile_path" alt="" />
+              </div>
+              <div class="actor_details">
+              <h4>{{item.name}}</h4>
+              <p>{{item.character}}</p>
+            </div>
+           
+          </swiper-slide>
+        }
+      
+    }
+  
+    </swiper-container>
+  </div>
+  </section>
+
+<!-- <app-single-movie-trailers [movieId]="id"></app-single-movie-trailers> -->
+<section class="trailer_Section">
+  <div class="container_trailer">
+    <div class="header">
+        <div class="relative">
+            <h3>Official trailers</h3>
+            <div class="line"></div>
+        </div>
+    </div>
+    @if (videoLength == 0) {
+    <swiper-container #swiperContainerTrailers class="swiperContainerTrailers"  loop="true" cssmode="true"  slides-per-view="auto" space-between="10">
+      @for (item of videos; track $index) {
+          <swiper-slide class="slide_item_video">
+            <div class="video_img">
+            <img [src]="'https://img.youtube.com/vi/' + item.key + '/mqdefault.jpg'" >
+            <div class="video_icon" (click)="popUp(item.key)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM10.6219 8.41459C10.5562 8.37078 10.479 8.34741 10.4 8.34741C10.1791 8.34741 10 8.52649 10 8.74741V15.2526C10 15.3316 10.0234 15.4088 10.0672 15.4745C10.1897 15.6583 10.4381 15.708 10.6219 15.5854L15.5008 12.3328C15.5447 12.3035 15.5824 12.2658 15.6117 12.2219C15.7343 12.0381 15.6846 11.7897 15.5008 11.6672L10.6219 8.41459Z"></path></svg>            </div>
+            </div>
+          <div class="video_title">
+            <p>{{item.name}}</p>
+          </div>
+          </swiper-slide>
+        }
+      
+    </swiper-container>
+  }@else if(videoLength == 1 ) {
+    <div class="content_wrapper" >
+      @for (item of videos; track $index) {
+      <div class="box">
+        <div class="videoImg">
+           <img [src]="'https://img.youtube.com/vi/' + item.key + '/mqdefault.jpg'" >
+           <div class="video_icon" (click)="popUp(item.key)">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM10.6219 8.41459C10.5562 8.37078 10.479 8.34741 10.4 8.34741C10.1791 8.34741 10 8.52649 10 8.74741V15.2526C10 15.3316 10.0234 15.4088 10.0672 15.4745C10.1897 15.6583 10.4381 15.708 10.6219 15.5854L15.5008 12.3328C15.5447 12.3035 15.5824 12.2658 15.6117 12.2219C15.7343 12.0381 15.6846 11.7897 15.5008 11.6672L10.6219 8.41459Z"></path></svg>        
+</div>
+        </div>
+        <div class="video_title">
+          <p>{{item.name}}</p>
+        </div>
+      </div>
+    }
+    </div>
+  }@else if(videoLength == -1){
+    <div class="content_wrapper" >
+      <p style="width: 100%; display:flex;align-items: center; justify-content: center;">No trailers available.</p>
+    </div>
+  }
+  </div>
+  </section>
+
+  @if (active) {
+  <div class="popUp" (click)="closePopUp()">
+    <div class="boxPop">
+    <iframe   width="800"
+    height="450" [src]="safeUrl" style="border-radius:0.5rem ; border:1px solid white;"></iframe>
+    <button (click)="closePopUp()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg></button>
+    </div>
+  </div>
+  }
+  
+
+
+
+
+
+<!-- <app-single-similiar-movies [movieId]="id" (dataEmitter)="recevieId($event)" ></app-single-similiar-movies> -->
+
+<section class="similar_movies_sec">
+    <div class="container">
+        <div class="header">
+            <div class="relative">
+                <h3>Similar movies</h3>
+                <div class="line"></div>
+            </div>
+        </div>
+        <swiper-container #swiperContainer class="swiper-container similar_swiper" loop="true"  cssmode="true"  slides-per-view="auto" space-between="10">
+            @for (item of moviesSimilar; track $index) {
+            <swiper-slide class="similar_item" >
+              <div class="slider_item skeleton" [ngClass]="{'loaded': arr[$index]}" #box>
+                <a (click)="getSimilarMovieId(item.id)">
+                        @if(item.poster_path == null){
+                            <img [src]="'https://via.placeholder.com/200x300?text=Similar+Movie'" />
+                        }@else {
+                             <img class="img" [src]="path + item.poster_path" [alt]="item.title" (load)="loaded($index , box , img)" #img>
+                        }
+            
+                        <div class="iconSim" >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="rgba(247,5,5,1)"><path d="M12.2439 4C12.778 4.00294 14.1143 4.01586 15.5341 4.07273L16.0375 4.09468C17.467 4.16236 18.8953 4.27798 19.6037 4.4755C20.5486 4.74095 21.2913 5.5155 21.5423 6.49732C21.942 8.05641 21.992 11.0994 21.9982 11.8358L21.9991 11.9884L21.9991 11.9991C21.9991 11.9991 21.9991 12.0028 21.9991 12.0099L21.9982 12.1625C21.992 12.8989 21.942 15.9419 21.5423 17.501C21.2878 18.4864 20.5451 19.261 19.6037 19.5228C18.8953 19.7203 17.467 19.8359 16.0375 19.9036L15.5341 19.9255C14.1143 19.9824 12.778 19.9953 12.2439 19.9983L12.0095 19.9991L11.9991 19.9991C11.9991 19.9991 11.9956 19.9991 11.9887 19.9991L11.7545 19.9983C10.6241 19.9921 5.89772 19.941 4.39451 19.5228C3.4496 19.2573 2.70692 18.4828 2.45587 17.501C2.0562 15.9419 2.00624 12.8989 2 12.1625V11.8358C2.00624 11.0994 2.0562 8.05641 2.45587 6.49732C2.7104 5.51186 3.45308 4.73732 4.39451 4.4755C5.89772 4.05723 10.6241 4.00622 11.7545 4H12.2439ZM9.99911 8.49914V15.4991L15.9991 11.9991L9.99911 8.49914Z"></path></svg>
+                            <h4>{{item.title || item.name }}</h4>
+                          </div>
+                        </a>
+                        <div class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg><span>{{voteAverage}}</span>
+                        </div>
+              </div>
+              
+            </swiper-slide>
+            }@empty {
+              <p style="width: 100%; display:flex;align-items: center; justify-content: center;">No Similar Movies available.</p>
+            }
+          </swiper-container>
+    </div>
+</section>

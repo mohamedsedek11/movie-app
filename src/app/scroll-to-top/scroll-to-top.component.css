@@ -1,0 +1,43 @@
+.btn_container{
+    position: fixed;
+    right: -48px;
+    bottom: 30px;
+    z-index: 20;
+    transition: all 0.3s;
+}
+
+.btn{
+    
+    border: none;
+    outline: none;
+    border-radius: 9999px;
+    background-image: linear-gradient(98.37deg, #f89e00 .99%, #da2f68 100%);    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+svg{
+    width: 48px;
+    height: 45px;
+    fill: white;
+    animation: rotate 1s linear infinite alternate;
+}
+
+.show{
+    right: 50px !important;
+}
+
+
+/* make animation to svg*/
+
+@keyframes rotate {
+    0% {
+        transform: translateY(10%);
+    }
+    50% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(10%);
+    }
+}

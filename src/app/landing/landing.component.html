@@ -1,0 +1,40 @@
+<div class="container">
+  <swiper-container #swiperContainer class="swiper-container" loop="true" centeredSlides="treu" centeredSlidesBounds="true">
+    @for (item of all; track $index) {
+    <swiper-slide [ngStyle]="{'background-image': 'linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),url(' +  backGround  + item.backdrop_path + ')'}"  [attr.data-image]="item.backdrop_path" [attr.data-name]="item.original_title" [attr.data-desc]="item.overview">
+      <div class="details">
+      <div class="item_info">
+        <h2>{{item.title || item.name}}</h2>
+        <p>{{item.overview.substring(0,150)}}...</p>
+        <div class="landing_btns">
+          <button type="button" class="btn_trailer" (click)="popUp(item.id , item.media_type)">watch trailer</button>
+          <a type="button" class="btn_watch" [routerLink]="[item.media_type  , item.id]">watch now</a>
+        </div>
+      </div>
+      <div class="item_poster">
+        <div class="card">
+          <img [src]="path + item.poster_path" alt="">
+        </div>
+      </div>
+    </div>
+    </swiper-slide>
+    }
+  </swiper-container>
+</div>
+
+
+
+@if (active) {
+  <div class="popUp" (click)="closePopUp()">
+    <div class="boxPop">
+    <iframe    width="800"
+    height="450" [src]="safeUrl"  style="border-radius:0.5rem ; border:1px solid white;"></iframe>
+    <button (click)="closePopUp()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg></button>
+    </div>
+  </div>
+  }
+
+
+  <!-- <ngx-spinner  bdColor = "#000000" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: rgb(255, 249, 249)" > Loading... </p></ngx-spinner> -->
+
+ 
