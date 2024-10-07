@@ -343,7 +343,7 @@ this.observe.observe(box)
     } else {
       this.router.navigate(['/tv', id]);
     }
-    
+    window.scrollTo({ top: 0, behavior:'smooth' });
     this.castinit()
     this.header()
     this.similar()
